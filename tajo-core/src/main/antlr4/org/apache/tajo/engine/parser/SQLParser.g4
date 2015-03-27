@@ -1067,6 +1067,7 @@ named_columns_join
 table_primary
   : table_or_query_name ((AS)? alias=identifier)? (LEFT_PAREN column_name_list RIGHT_PAREN)?
   | derived_table (AS)? name=identifier (LEFT_PAREN column_name_list RIGHT_PAREN)?
+  | LEFT_PAREN table_reference_list RIGHT_PAREN
   ;
 
 column_name_list

@@ -185,6 +185,12 @@ public class TestSQLAnalyzer {
   }
 
   @Test
+  public void testJoin16() throws IOException {
+    String sql = FileUtil.readTextFileFromResource("queries/default/join_16.sql");
+    parseQuery(sql);
+  }
+
+  @Test
   public void testSet1() throws IOException {
     String sql = FileUtil.readTextFileFromResource("queries/default/set_1.sql");
     parseQuery(sql);

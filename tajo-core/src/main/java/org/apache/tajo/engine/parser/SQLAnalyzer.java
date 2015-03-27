@@ -660,6 +660,12 @@ public class SQLAnalyzer extends SQLParserBaseVisitor<Expr> {
       return relation;
     } else if (ctx.derived_table() != null) {
       return new TablePrimarySubQuery(ctx.name.getText(), visit(ctx.derived_table().table_subquery()));
+    } else if (ctx.table_reference_list() != null) {
+      Expr[] relations = new Expr[ctx.table_reference_list().table_reference().size()];
+      for (int i = 0; i < relations.length; i++) {
+        relations[i] = visitTable_reference(ctx.table_reference_list().table_reference(i));
+      }
+      return new RelationList(relations);
     } else {
       return null;
     }
